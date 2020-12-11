@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WavePlayer", "WavePlayer.csproj", "{797867E0-A1BD-4A0D-B375-2C6F84794BDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{797867E0-A1BD-4A0D-B375-2C6F84794BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{797867E0-A1BD-4A0D-B375-2C6F84794BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{797867E0-A1BD-4A0D-B375-2C6F84794BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{797867E0-A1BD-4A0D-B375-2C6F84794BDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98E702E4-E968-4958-B5AF-45306D57F94A}
+	EndGlobalSection
+EndGlobal

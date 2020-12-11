@@ -1,0 +1,36 @@
+﻿<Window x:Class="WavePlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WavePlayer"
+        mc:Ignorable="d"
+        Height="540" Width="960" FontFamily="Segoe UI">
+    <Grid>
+        <Menu FontSize="13">
+            <MenuItem Header="Project">
+                <MenuItem Header="New Project" Click="NewProject" />
+                <MenuItem Header="Save Project" Click="SaveProject" />
+                <MenuItem Header="Load Project" Click="LoadProject" />
+                <MenuItem Header="Project Setting" />
+            </MenuItem>
+            <MenuItem Header="Import">
+                <MenuItem Header="Import Script" />
+                <MenuItem Header="Import Wave Folder" />
+            </MenuItem>
+            <MenuItem Header="Options">
+            </MenuItem>
+        </Menu>
+        <Grid x:Name="WelcomeGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="NewProjectButton" Grid.Column="0" Content="New project" Height="200" Width="300" FontSize="20" Click="NewProject" />
+            <Button x:Name="LoadProjectButton" Grid.Column="1" Content="Load project" Height="200" Width="300" FontSize="20" Click="LoadProject" />
+        </Grid>
+        <DockPanel x:Name="WorkingDockPanel" Visibility="Collapsed">
+            
+        </DockPanel>
+    </Grid>
+</Window>
