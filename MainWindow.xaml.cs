@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 using Microsoft.Win32;
 
 namespace WavePlayer
@@ -17,11 +18,15 @@ namespace WavePlayer
             Title = App.SoftwareName;
         }
 
+        private ListView scriptListView = null;
+
         public void OnCurProjectChanged()
         {
             WelcomeGrid.Visibility = Visibility.Collapsed;
             WorkingDockPanel.Visibility = Visibility.Visible;
+
             UpdateTitle();
+            UpdateScript();
         }
 
         public void OnCurProjectPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -30,6 +35,15 @@ namespace WavePlayer
             {
                 UpdateTitle();
             }
+            else if (e.PropertyName == "ScriptLines")
+            {
+                UpdateScript();
+            }
+        }
+
+        private void UpdateScript()
+        {
+            Debug.Assert(CurProject.ScriptLines != null);
         }
 
         private void UpdateTitle()
@@ -87,6 +101,19 @@ namespace WavePlayer
             }
         }
 
+        private string ShowDialogForPath(FileDialog dialog)
+        {
+            bool? dialogResult = dialog.ShowDialog();
+            if (dialogResult ?? false)
+            {
+                return dialog.FileName;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private string ShowDialogForProjectConfigPath<T>(string title, string filename = "")
             where T : FileDialog, new()
         {
@@ -98,15 +125,7 @@ namespace WavePlayer
                 FileName = filename,
                 Title = title,
             };
-            bool? dialogResult = dialog.ShowDialog();
-            if (dialogResult ?? false)
-            {
-                return dialog.FileName;
-            }
-            else
-            {
-                return null;
-            }
+            return ShowDialogForPath(dialog);
         }
 
         public void LoadProject(object sender, RoutedEventArgs e)
@@ -170,6 +189,20 @@ namespace WavePlayer
             }
             Debug.Fail("Unexpected MessageBoxResult");
             return false;
+        }
+
+        public void ImportScript(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog()
+            {
+                DefaultExt = ".txt",
+                Title = "Import Script",
+            };
+            string scriptPath = ShowDialogForPath(dialog);
+            if (scriptPath != null)
+            {
+                CurProject.ScriptPath = scriptPath;
+            }
         }
     }
 }

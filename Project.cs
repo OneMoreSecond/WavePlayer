@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -43,12 +44,23 @@ namespace WavePlayer
             set => SetPropertyAndNotifyChange(ref name, value);
         }
 
+        private IReadOnlyList<string> scriptLines = new List<string>();
+        [JsonIgnore]
+        public IReadOnlyList<string> ScriptLines
+        {
+            get => scriptLines;
+            private set => SetPropertyAndNotifyChange(ref scriptLines, value);
+        }
 
         private string scriptPath = null;
         public string ScriptPath
         {
             get => scriptPath;
-            set => SetPropertyAndNotifyChange(ref scriptPath, value);
+            set
+            {
+                SetPropertyAndNotifyChange(ref scriptPath, value);
+                ScriptLines = File.ReadAllLines(scriptPath);
+            }
         }
 
 
