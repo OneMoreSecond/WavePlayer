@@ -30,7 +30,7 @@
             <Button x:Name="LoadProjectButton" Grid.Column="1" Content="Load project" Height="200" Width="300" FontSize="20" Click="LoadProject" />
         </Grid>
         <DockPanel x:Name="WorkingDockPanel" Visibility="Collapsed">
-            <ListView ItemsSource="{Binding SourceCollection}">
+            <ListView ItemsSource="{Binding Path=TextDescription, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Test1}" />
